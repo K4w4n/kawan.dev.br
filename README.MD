@@ -10,7 +10,7 @@ Portfólio pessoal de **Kawan Araújo**, desenvolvedor fullstack. Apresenta expe
 - **Tailwind CSS** — estilização utilitária
 - **Formspree** — backend do formulário de contato
 - **Font Awesome** — ícones
-- **next/font** — Space Grotesk + Inter (sem layout shift)
+- **next/font/local** — Space Grotesk + Inter self-hosted (sem layout shift e sem download no build)
 
 ## Estrutura
 
@@ -34,7 +34,8 @@ portifolio/
 │   ├── .htaccess           # Regras de URL para a hospedagem
 │   └── img/
 │       └── logo.svg        # Logo KA
-├── next.config.ts          # output: 'export'
+├── fonts/                  # Fontes self-hosted (woff2)
+├── next.config.ts          # output: 'export' + trailingSlash
 ├── tailwind.config.js      # Tokens de design (cores, fontes)
 ├── identidade-visual.md    # Guia de identidade visual
 └── .github/

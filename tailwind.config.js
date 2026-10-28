@@ -15,8 +15,8 @@ module.exports = {
         favo:    '#3A3A3A',
       },
       fontFamily: {
-        titulo: ['Space Grotesk', 'sans-serif'],
-        corpo:  ['Inter', 'sans-serif'],
+        titulo: ['var(--font-space-grotesk)', 'sans-serif'],
+        corpo:  ['var(--font-inter)', 'sans-serif'],
       },
     },
   },
