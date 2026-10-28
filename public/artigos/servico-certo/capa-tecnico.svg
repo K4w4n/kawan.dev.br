@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-label="Capa do artigo técnico sobre o Serviço Certo">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1A1A1A" />
+      <stop offset="1" stop-color="#2C2C2C" />
+    </linearGradient>
+    <pattern id="hex" width="120" height="103.92" patternUnits="userSpaceOnUse">
+      <path d="M30 0 L90 0 L120 51.96 L90 103.92 L30 103.92 L0 51.96 Z" fill="none" stroke="#3A3A3A" stroke-width="1.5" />
+    </pattern>
+    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#F5C518" stop-opacity="0.2" />
+      <stop offset="1" stop-color="#F5C518" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#bg)" />
+  <rect width="1600" height="900" fill="url(#hex)" opacity="0.45" />
+  <circle cx="1240" cy="460" r="520" fill="url(#glow)" />
+
+  <g transform="translate(140 250)">
+    <rect x="0" y="0" width="252" height="44" rx="22" fill="none" stroke="#F5C518" stroke-width="2" />
+    <text x="126" y="29" text-anchor="middle" font-family="'Inter', sans-serif" font-size="20" font-weight="600" fill="#F5C518" letter-spacing="3">SERVIÇO CERTO</text>
+  </g>
+
+  <text x="140" y="410" font-family="'Space Grotesk', 'Inter', sans-serif" font-size="92" font-weight="700" fill="#F9F9F9" letter-spacing="2">VISÃO</text>
+  <text x="140" y="515" font-family="'Space Grotesk', 'Inter', sans-serif" font-size="92" font-weight="700" fill="#F5C518" letter-spacing="2">TÉCNICA</text>
+
+  <rect x="140" y="570" width="120" height="4" fill="#F5C518" />
+
+  <text x="140" y="640" font-family="'Inter', sans-serif" font-size="30" fill="#A0A0A0">Arquitetura, modelo de dados</text>
+  <text x="140" y="682" font-family="'Inter', sans-serif" font-size="30" fill="#A0A0A0">e decisões de engenharia.</text>
+</svg>

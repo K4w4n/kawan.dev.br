@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 700" width="1600" height="700" role="img" aria-label="Arquitetura do monorepo: web em Next.js, contratos Zod compartilhados, API NestJS e banco SQLite ou PostgreSQL">
+  <rect width="1600" height="700" fill="#1A1A1A" />
+
+  <text x="800" y="100" text-anchor="middle" font-family="'Space Grotesk', 'Inter', sans-serif" font-size="40" font-weight="700" fill="#F9F9F9">Um monorepo, contratos compartilhados</text>
+  <text x="800" y="146" text-anchor="middle" font-family="'Inter', sans-serif" font-size="22" fill="#A0A0A0">Turborepo + pnpm workspaces</text>
+
+  <g font-family="'Inter', sans-serif" text-anchor="middle">
+    <g transform="translate(80 240)">
+      <rect width="320" height="220" rx="14" fill="#2C2C2C" stroke="#3A3A3A" stroke-width="2" />
+      <text x="160" y="58" font-size="18" font-weight="600" fill="#F5C518" letter-spacing="2">APPS/WEB</text>
+      <text x="160" y="112" font-size="30" font-weight="600" fill="#F9F9F9">Next.js</text>
+      <text x="160" y="154" font-size="20" fill="#A0A0A0">React 19 · Tailwind</text>
+      <text x="160" y="184" font-size="20" fill="#A0A0A0">shadcn/ui</text>
+    </g>
+
+    <g transform="translate(460 240)">
+      <rect width="320" height="220" rx="14" fill="#2C2C2C" stroke="#F5C518" stroke-width="2" />
+      <text x="160" y="58" font-size="18" font-weight="600" fill="#F5C518" letter-spacing="2">PACKAGES</text>
+      <text x="160" y="112" font-size="30" font-weight="600" fill="#F9F9F9">Contracts</text>
+      <text x="160" y="154" font-size="20" fill="#A0A0A0">schemas Zod</text>
+      <text x="160" y="184" font-size="20" fill="#A0A0A0">tipos compartilhados</text>
+    </g>
+
+    <g transform="translate(840 240)">
+      <rect width="320" height="220" rx="14" fill="#2C2C2C" stroke="#3A3A3A" stroke-width="2" />
+      <text x="160" y="58" font-size="18" font-weight="600" fill="#F5C518" letter-spacing="2">APPS/API</text>
+      <text x="160" y="112" font-size="30" font-weight="600" fill="#F9F9F9">NestJS</text>
+      <text x="160" y="154" font-size="20" fill="#A0A0A0">modular monolith</text>
+      <text x="160" y="184" font-size="20" fill="#A0A0A0">Clean Architecture</text>
+    </g>
+
+    <g transform="translate(1220 240)">
+      <rect width="320" height="220" rx="14" fill="#2C2C2C" stroke="#3A3A3A" stroke-width="2" />
+      <text x="160" y="58" font-size="18" font-weight="600" fill="#F5C518" letter-spacing="2">BANCO</text>
+      <text x="160" y="112" font-size="30" font-weight="600" fill="#F9F9F9">Knex</text>
+      <text x="160" y="154" font-size="20" fill="#A0A0A0">SQLite (dev)</text>
+      <text x="160" y="184" font-size="20" fill="#A0A0A0">PostgreSQL (prod)</text>
+    </g>
+  </g>
+
+  <g stroke="#F5C518" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M405 350 L450 350" />
+    <path d="M435 335 L455 350 L435 365" />
+    <path d="M785 350 L830 350" />
+    <path d="M815 335 L835 350 L815 365" />
+    <path d="M1165 350 L1210 350" />
+    <path d="M1195 335 L1215 350 L1195 365" />
+  </g>
+
+  <text x="800" y="580" text-anchor="middle" font-family="'Inter', sans-serif" font-size="22" fill="#A0A0A0">O domínio não conhece NestJS, Knex ou HTTP — só TypeScript puro.</text>
+</svg>

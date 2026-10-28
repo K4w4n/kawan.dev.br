@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-label="Camadas da Clean Architecture: presentation e infrastructure dependem de application, que depende de domain">
+  <rect width="1600" height="900" fill="#1A1A1A" />
+
+  <text x="800" y="95" text-anchor="middle" font-family="'Space Grotesk', 'Inter', sans-serif" font-size="40" font-weight="700" fill="#F9F9F9">Clean Architecture por módulo</text>
+  <text x="800" y="140" text-anchor="middle" font-family="'Inter', sans-serif" font-size="22" fill="#A0A0A0">A dependência aponta sempre para dentro</text>
+
+  <g font-family="'Inter', sans-serif" text-anchor="middle">
+    <g transform="translate(220 210)">
+      <rect width="540" height="130" rx="12" fill="#2C2C2C" stroke="#3A3A3A" stroke-width="2" />
+      <text x="270" y="45" font-size="16" font-weight="600" fill="#F5C518" letter-spacing="2">PRESENTATION</text>
+      <text x="270" y="82" font-size="26" font-weight="600" fill="#F9F9F9">HTTP</text>
+      <text x="270" y="112" font-size="19" fill="#A0A0A0">controllers, DTOs, presenters</text>
+    </g>
+
+    <g transform="translate(840 210)">
+      <rect width="540" height="130" rx="12" fill="#2C2C2C" stroke="#3A3A3A" stroke-width="2" />
+      <text x="270" y="45" font-size="16" font-weight="600" fill="#F5C518" letter-spacing="2">INFRASTRUCTURE</text>
+      <text x="270" y="82" font-size="26" font-weight="600" fill="#F9F9F9">Adapters</text>
+      <text x="270" y="112" font-size="19" fill="#A0A0A0">Knex, PDF, integrações</text>
+    </g>
+
+    <g transform="translate(360 440)">
+      <rect width="880" height="120" rx="12" fill="#2C2C2C" stroke="#3A3A3A" stroke-width="2" />
+      <text x="440" y="42" font-size="16" font-weight="600" fill="#F5C518" letter-spacing="2">APPLICATION</text>
+      <text x="440" y="84" font-size="26" font-weight="600" fill="#F9F9F9">Casos de uso e queries</text>
+      <text x="440" y="110" font-size="19" fill="#A0A0A0">orquestração e ports</text>
+    </g>
+
+    <g transform="translate(460 660)">
+      <rect width="680" height="130" rx="12" fill="#1F1B0E" stroke="#F5C518" stroke-width="2" />
+      <text x="340" y="45" font-size="16" font-weight="600" fill="#F5C518" letter-spacing="2">DOMAIN</text>
+      <text x="340" y="82" font-size="26" font-weight="600" fill="#F9F9F9">Regras de negócio</text>
+      <text x="340" y="112" font-size="19" fill="#A0A0A0">entidades, value objects, erros</text>
+    </g>
+  </g>
+
+  <g stroke="#F5C518" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M490 345 L490 425" />
+    <path d="M475 410 L490 430 L505 410" />
+    <path d="M1110 345 L1110 425" />
+    <path d="M1095 410 L1110 430 L1125 410" />
+    <path d="M800 565 L800 645" />
+    <path d="M785 630 L800 650 L815 630" />
+  </g>
+
+  <text x="800" y="840" text-anchor="middle" font-family="'Inter', sans-serif" font-size="22" fill="#A0A0A0">O domínio é TypeScript puro: não importa NestJS, Knex ou HTTP.</text>
+</svg>

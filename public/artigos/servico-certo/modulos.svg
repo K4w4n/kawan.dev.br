@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-label="Módulos do Serviço Certo: ordens de serviço, clientes, produtos, serviços e usuários">
+  <rect width="1600" height="900" fill="#1A1A1A" />
+
+  <text x="800" y="120" text-anchor="middle" font-family="'Space Grotesk', 'Inter', sans-serif" font-size="44" font-weight="700" fill="#F9F9F9">Módulos disponíveis</text>
+  <text x="800" y="166" text-anchor="middle" font-family="'Inter', sans-serif" font-size="24" fill="#A0A0A0">Cinco módulos funcionando de ponta a ponta</text>
+  <rect x="755" y="190" width="90" height="4" fill="#F5C518" />
+
+  <g font-family="'Inter', sans-serif" text-anchor="middle">
+    <g transform="translate(50 260)">
+      <rect width="280" height="180" rx="12" fill="#2C2C2C" stroke="#F5C518" stroke-width="2" />
+      <text x="140" y="80" font-size="26" font-weight="600" fill="#F9F9F9">Ordens de</text>
+      <text x="140" y="114" font-size="26" font-weight="600" fill="#F9F9F9">serviço</text>
+      <text x="140" y="152" font-size="18" fill="#A0A0A0">protocolo e itens</text>
+    </g>
+
+    <g transform="translate(355 260)">
+      <rect width="280" height="180" rx="12" fill="#2C2C2C" stroke="#3A3A3A" stroke-width="2" />
+      <text x="140" y="98" font-size="26" font-weight="600" fill="#F9F9F9">Clientes</text>
+      <text x="140" y="136" font-size="18" fill="#A0A0A0">CPF e CNPJ</text>
+    </g>
+
+    <g transform="translate(660 260)">
+      <rect width="280" height="180" rx="12" fill="#2C2C2C" stroke="#3A3A3A" stroke-width="2" />
+      <text x="140" y="98" font-size="26" font-weight="600" fill="#F9F9F9">Produtos</text>
+      <text x="140" y="136" font-size="18" fill="#A0A0A0">catálogo e preço</text>
+    </g>
+
+    <g transform="translate(965 260)">
+      <rect width="280" height="180" rx="12" fill="#2C2C2C" stroke="#3A3A3A" stroke-width="2" />
+      <text x="140" y="98" font-size="26" font-weight="600" fill="#F9F9F9">Serviços</text>
+      <text x="140" y="136" font-size="18" fill="#A0A0A0">tabela de preços</text>
+    </g>
+
+    <g transform="translate(1270 260)">
+      <rect width="280" height="180" rx="12" fill="#2C2C2C" stroke="#3A3A3A" stroke-width="2" />
+      <text x="140" y="98" font-size="26" font-weight="600" fill="#F9F9F9">Usuários</text>
+      <text x="140" y="136" font-size="18" fill="#A0A0A0">acesso por conta</text>
+    </g>
+  </g>
+
+  <text x="800" y="560" text-anchor="middle" font-family="'Inter', sans-serif" font-size="20" font-weight="600" fill="#F5C518" letter-spacing="4">EM BREVE</text>
+
+  <g font-family="'Inter', sans-serif" font-size="22" text-anchor="middle">
+    <g transform="translate(380 600)">
+      <rect width="260" height="64" rx="32" fill="#2C2C2C" stroke="#3A3A3A" stroke-width="2" stroke-dasharray="6 6" />
+      <text x="130" y="40" fill="#A0A0A0">Estoque</text>
+    </g>
+
+    <g transform="translate(670 600)">
+      <rect width="260" height="64" rx="32" fill="#2C2C2C" stroke="#3A3A3A" stroke-width="2" stroke-dasharray="6 6" />
+      <text x="130" y="40" fill="#A0A0A0">Nota fiscal</text>
+    </g>
+
+    <g transform="translate(960 600)">
+      <rect width="260" height="64" rx="32" fill="#2C2C2C" stroke="#3A3A3A" stroke-width="2" stroke-dasharray="6 6" />
+      <text x="130" y="40" fill="#A0A0A0">Permissões</text>
+    </g>
+  </g>
+
+  <text x="800" y="770" text-anchor="middle" font-family="'Inter', sans-serif" font-size="22" fill="#A0A0A0">Multi-tenant desde o primeiro dia: cada negócio com seus próprios dados.</text>
+</svg>
