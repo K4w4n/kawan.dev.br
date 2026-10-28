@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Navbar from '@/components/Navbar'
 import ZoomableImage from '@/components/ZoomableImage'
+import CodeBlock from '@/components/CodeBlock'
 
 export const metadata: Metadata = {
   title: 'Serviço Certo — visão técnica: arquitetura e decisões de engenharia',
@@ -135,6 +136,39 @@ export default function ServicoCertoTechnicalArticle() {
               a ser um erro de compilação.
             </p>
 
+            <CodeBlock
+              filename="packages/contracts/src/service-orders/service-order.schema.ts"
+              code={`export const createServiceOrderSchema = z
+  .object({
+    customerId: customerIdSchema,
+    note: serviceOrderNoteSchema.optional(),
+    products: z.array(productItemInputSchema).max(MAX_SERVICE_ORDER_ITEMS).optional(),
+    services: z.array(serviceItemInputSchema).max(MAX_SERVICE_ORDER_ITEMS).optional(),
+  })
+  .strict()
+  .superRefine((data, context) => {
+    const hasProducts = (data.products?.length ?? 0) > 0;
+    const hasServices = (data.services?.length ?? 0) > 0;
+
+    if (!hasProducts && !hasServices) {
+      context.addIssue({
+        code: 'custom',
+        path: [],
+        message: 'Informe pelo menos um produto ou serviço',
+      });
+    }
+
+    validateItemDuplicates(data, context);
+  });`}
+            />
+
+            <p>
+              O mesmo schema valida o corpo da requisição na API e o formulário
+              de nova ordem no frontend. Regras como &quot;ao menos um
+              item&quot; e &quot;sem produtos duplicados&quot; ficam em um
+              único lugar.
+            </p>
+
             <figure className="my-10">
               <ZoomableImage
                 src="/artigos/servico-certo/arquitetura.svg"
@@ -198,12 +232,87 @@ export default function ServicoCertoTechnicalArticle() {
             </ul>
 
             <p>
+              No domínio, a entidade garante as invariantes antes de qualquer
+              persistência:
+            </p>
+
+            <CodeBlock
+              filename="apps/api/src/modules/service-orders/domain/entities/service-order.ts"
+              code={`export class ServiceOrder {
+  private constructor(private readonly props: ServiceOrderProps) {}
+
+  static create(input: {
+    id: string;
+    tenantId: string;
+    protocol: Protocol;
+    customerId: string;
+    createdBy: ServiceOrderCreator;
+    note?: string | null;
+    products: ServiceOrderProductItem[];
+    services: ServiceOrderServiceItem[];
+    now: Date;
+  }): ServiceOrder {
+    const products = normalizeProducts(input.products);
+    const services = normalizeServices(input.services);
+
+    if (products.length === 0 && services.length === 0) {
+      throw new ServiceOrderItemsRequiredError();
+    }
+
+    return new ServiceOrder({
+      id: input.id,
+      tenantId: input.tenantId,
+      protocol: input.protocol,
+      note: normalizeNote(input.note ?? null),
+      customerId: input.customerId,
+      createdBy: normalizeCreator(input.createdBy),
+      products,
+      services,
+      createdAt: input.now,
+      updatedAt: input.now,
+      deletedAt: null,
+    });
+  }
+}`}
+            />
+
+            <p>
               O domínio não importa NestJS, Knex ou qualquer detalhe externo. A
               composição das dependências acontece apenas no arquivo{' '}
               <code className="text-mel">.module.ts</code> de cada contexto.
               Isso permite testar as regras de negócio sem subir banco ou
               servidor.
             </p>
+
+            <p>
+              Na camada de aplicação, o caso de uso resolve o protocolo, cria a
+              entidade e persiste a ordem e seus itens dentro da mesma
+              transação:
+            </p>
+
+            <CodeBlock
+              filename="apps/api/src/modules/service-orders/application/use-cases/create-service-order.use-case.ts"
+              code={`const order = await this.uow.run(async () => {
+  const protocol = await this.orders.nextProtocol(command.tenantId);
+
+  const created = ServiceOrder.create({
+    id: this.ids.next(),
+    tenantId: command.tenantId,
+    protocol,
+    customerId: command.customerId,
+    createdBy: command.createdBy,
+    note: command.note ?? null,
+    products, // nome e preço já congelados a partir do catálogo
+    services,
+    now: this.clock.now(),
+  });
+
+  await this.orders.save(created);
+  await this.orders.replaceItems(created);
+
+  return created;
+});`}
+            />
 
             <h2 className="font-titulo text-2xl font-bold text-gray-100 pt-6 border-l-[3px] border-mel pl-4">
               Modelo de dados
@@ -255,6 +364,27 @@ export default function ServicoCertoTechnicalArticle() {
               interno.
             </p>
 
+            <p>A geração usa um incremento atômico por tenant:</p>
+
+            <CodeBlock
+              filename="apps/api/src/modules/service-orders/infrastructure/persistence/knex-service-order.repository.ts"
+              code={`async nextProtocol(tenantId: string): Promise<Protocol> {
+  await this.uow
+    .executor('service_order_counters')
+    .insert({ tenant_id: tenantId, last_value: 0 })
+    .onConflict('tenant_id')
+    .ignore();
+
+  const rows = (await this.uow
+    .executor('service_order_counters')
+    .where({ tenant_id: tenantId })
+    .increment('last_value', 1)
+    .returning('last_value')) as Array<{ last_value: number | string }>;
+
+  return Protocol.fromSequence(Number(rows[0]?.last_value));
+}`}
+            />
+
             <h3 className="font-titulo text-xl font-bold text-gray-100 pt-4">
               Soft delete
             </h3>
@@ -275,6 +405,32 @@ export default function ServicoCertoTechnicalArticle() {
               negócio pelo slug do tenant, combinado com e-mail e senha. As
               senhas são armazenadas com argon2id.
             </p>
+
+            <p>
+              O access token é assinado em HS256 e verificado com validação de
+              emissor, público e algoritmo:
+            </p>
+
+            <CodeBlock
+              filename="apps/api/src/modules/identity/infrastructure/auth/jose-token-issuer.ts"
+              code={`// emissão
+const token = await new SignJWT({ tid: payload.tenantId })
+  .setProtectedHeader({ alg: 'HS256', typ: 'JWT' })
+  .setSubject(payload.accountId)
+  .setJti(v7())
+  .setIssuer(this.issuer)
+  .setAudience(this.audience)
+  .setIssuedAt(now)
+  .setExpirationTime(now + this.ttlSeconds)
+  .sign(this.secret);
+
+// verificação
+const { payload: verified } = await jwtVerify(token, this.secret, {
+  issuer: this.issuer,
+  audience: this.audience,
+  algorithms: ['HS256'],
+});`}
+            />
 
             <ul className="list-disc list-inside space-y-3 marker:text-mel pl-2">
               <li>
