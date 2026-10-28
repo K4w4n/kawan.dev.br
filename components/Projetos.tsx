@@ -20,7 +20,7 @@ const projetos: Projeto[] = [
     ariaLabel: 'Projeto Serviço Certo',
     gitHubLink: "https://github.com/K4w4n/servico-certo",
     demo: null,
-    article: "/artigos/servico-certo"
+    article: "/artigos/servico-certo/"
   },
 ]
 

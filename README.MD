@@ -31,6 +31,7 @@ portifolio/
 │   ├── AnimateEntry.tsx    # Wrapper de animação (IntersectionObserver)
 │   └── Toast.tsx           # Feedback de ações
 ├── public/
+│   ├── .htaccess           # Regras de URL para a hospedagem
 │   └── img/
 │       └── logo.svg        # Logo KA
 ├── next.config.ts          # output: 'export'
@@ -61,6 +62,10 @@ Gera a pasta `out/` com o site estático pronto para deploy.
 ## Deploy
 
 O deploy é feito automaticamente via **GitHub Actions** a cada push na branch `master`. O workflow instala as dependências, executa o build e envia a pasta `out/` para o servidor via FTP.
+
+O site é exportado com `trailingSlash: true`, então cada rota vira uma pasta com `index.html` (ex.: `out/artigos/servico-certo/index.html`). Assim a hospedagem entrega a página corretamente ao acessar a URL com barra final.
+
+O arquivo `public/.htaccess` é copiado para `out/` no build e enviado junto com o site. Ele cobre URLs sem extensão e mantém compatibilidade com exports antigos em `.html`, além de definir a página 404 personalizada.
 
 ### Secrets necessários no repositório
 

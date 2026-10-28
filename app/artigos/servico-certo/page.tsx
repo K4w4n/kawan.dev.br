@@ -78,7 +78,7 @@ export default function ServicoCertoArticle() {
               que a plataforma entrega e o roadmap de evolução. A arquitetura e
               as decisões de engenharia estão no{' '}
               <a
-                href="/artigos/servico-certo-tecnico"
+                href="/artigos/servico-certo-tecnico/"
                 className="text-mel hover:underline"
               >
                 artigo técnico
@@ -297,7 +297,7 @@ export default function ServicoCertoArticle() {
             </p>
 
             <a
-              href="/artigos/servico-certo-tecnico"
+              href="/artigos/servico-certo-tecnico/"
               className="group flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 rounded-xl border border-favo bg-abelha p-5 my-6 hover:border-mel transition-colors duration-200"
             >
               <span className="flex flex-col gap-1">

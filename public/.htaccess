@@ -1,0 +1,34 @@
+# Regras para hospedagem compartilhada (Apache/LiteSpeed).
+#
+# O Next.js em modo de export estático gera as páginas como arquivos .html ou
+# como pastas com index.html. Como a pasta /artigos/servico-certo/ também
+# contém as imagens do artigo, uma URL com barra final pode cair em um
+# diretório sem index.html e a hospedagem responder 403.
+#
+# Estas regras garantem que a URL sempre chegue ao HTML correto.
+
+DirectoryIndex index.html
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # URL com barra final -> arquivo .html correspondente, quando a pasta não
+  # tiver um index.html próprio.
+  # Ex.: /artigos/servico-certo/ -> /artigos/servico-certo.html
+  RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI}index.html !-f
+  RewriteCond %{REQUEST_URI} ^/(.+)/$
+  RewriteCond %{DOCUMENT_ROOT}/%1.html -f
+  RewriteRule ^(.*?)/$ /$1.html [L]
+
+  # URL sem extensão -> arquivo .html correspondente, quando não for uma
+  # pasta com index.html (nesse caso a hospedagem adiciona a barra final).
+  # Ex.: /artigos/servico-certo -> /artigos/servico-certo.html
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME}/index.html !-f
+  RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI}.html -f
+  RewriteRule ^(.+)$ /$1.html [L]
+</IfModule>
+
+# Página 404 personalizada do export estático
+ErrorDocument 404 /404.html

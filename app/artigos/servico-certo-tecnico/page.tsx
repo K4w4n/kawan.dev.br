@@ -19,7 +19,7 @@ export default function ServicoCertoTechnicalArticle() {
           {/* Cabeçalho */}
           <header className="border-l-[3px] border-mel pl-5 mb-12">
             <a
-              href="/artigos/servico-certo"
+              href="/artigos/servico-certo/"
               className="inline-block text-sm text-gray-400 hover:text-mel transition-colors duration-200 mb-4"
             >
               ← Serviço Certo
@@ -69,7 +69,7 @@ export default function ServicoCertoTechnicalArticle() {
               autenticação e as decisões de engenharia que sustentam o produto.
               A visão funcional e o fluxo de uso estão no{' '}
               <a
-                href="/artigos/servico-certo"
+                href="/artigos/servico-certo/"
                 className="text-mel hover:underline"
               >
                 artigo principal
@@ -516,7 +516,7 @@ const { payload: verified } = await jwtVerify(token, this.secret, {
               </a>
 
               <a
-                href="/artigos/servico-certo"
+                href="/artigos/servico-certo/"
                 className="inline-flex items-center gap-2 rounded-lg border border-mel px-5 py-3 font-titulo text-sm font-bold text-mel hover:bg-mel hover:text-colmeia transition-colors duration-200"
               >
                 Ler a visão do produto
