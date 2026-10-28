@@ -5,30 +5,22 @@ interface Projeto {
   nome: string
   descricao: string
   tecnologias: string[]
-  ariaLabel: string
+  ariaLabel: string,
+  gitHubLink: string,
+  demo: string | null,
+  article: string | null,
 }
 
 const projetos: Projeto[] = [
   {
     icon: 'fa-solid fa-table-columns',
-    nome: 'TaskFlow',
-    descricao: 'Gerenciador de tarefas com quadros kanban, arrastar e soltar, e controle de sprints em tempo real.',
+    nome: 'Serviço Certo',
+    descricao: 'Plataforma para criação e gestão de ordens de serviço. Com ele pequenos negócios conseguem administrar os serviços prestados, emitir documentos e fazer a gestão dos seus clientes.',
     tecnologias: ['Next.js', 'NestJS', 'PostgreSQL'],
-    ariaLabel: 'Projeto TaskFlow',
-  },
-  {
-    icon: 'fa-solid fa-chart-line',
-    nome: 'PyAnalytics',
-    descricao: 'Dashboard de análise de dados em tempo real com gráficos interativos e ingestão de dados via streaming.',
-    tecnologias: ['Python', 'FastAPI', 'React'],
-    ariaLabel: 'Projeto PyAnalytics',
-  },
-  {
-    icon: 'fa-solid fa-shield-halved',
-    nome: 'AuthKit',
-    descricao: 'Biblioteca de autenticação JWT com suporte a refresh tokens, blacklist por Redis e middleware plug-and-play.',
-    tecnologias: ['Node.js', 'TypeScript', 'Redis'],
-    ariaLabel: 'Projeto AuthKit',
+    ariaLabel: 'Projeto Serviço Certo',
+    gitHubLink: "https://github.com/K4w4n/servico-certo",
+    demo: null,
+    article: "/artigos/servico-certo"
   },
 ]
 
@@ -76,17 +68,24 @@ export default function Projetos() {
                   {/* Botões */}
                   <div className="flex gap-3">
                     <a
-                      href="#"
+                      href={projeto.gitHubLink}
                       className="flex items-center gap-2 text-sm text-gray-300 hover:text-mel transition-colors border border-favo hover:border-mel rounded-lg px-4 py-2"
+                      target='_blank'
                     >
                       <i className="fa-brands fa-github" aria-hidden="true"></i> GitHub
                     </a>
-                    <a
-                      href="#"
+                    {projeto.demo && <a
+                      href={projeto.demo}
                       className="flex items-center gap-2 text-sm text-gray-300 hover:text-mel transition-colors border border-favo hover:border-mel rounded-lg px-4 py-2"
                     >
                       <i className="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> Demo
-                    </a>
+                    </a>}
+                    {projeto.article && <a
+                      href={projeto.article}
+                      className="flex items-center gap-2 text-sm text-gray-300 hover:text-mel transition-colors border border-favo hover:border-mel rounded-lg px-4 py-2"
+                    >
+                      <i className="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> Artigo
+                    </a>}
                   </div>
                 </div>
               </article>

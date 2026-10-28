@@ -46,7 +46,7 @@ export default function Navbar() {
 
           {/* Logo KA */}
           <a
-            href="#hero"
+            href="/#hero"
             className="font-titulo font-bold text-2xl text-mel tracking-widest select-none"
           >
             K4W4N
@@ -54,11 +54,11 @@ export default function Navbar() {
 
           {/* Nav desktop */}
           <nav aria-label="Navegação principal" className="hidden md:flex items-center gap-8">
-            <a href="#sobre"       className="text-gray-400 hover:text-mel transition-colors duration-200 text-sm font-medio">Sobre</a>
-            <a href="#habilidades" className="text-gray-400 hover:text-mel transition-colors duration-200 text-sm">Habilidades</a>
-            <a href="#projetos"    className="text-gray-400 hover:text-mel transition-colors duration-200 text-sm">Projetos</a>
-            <a href="#experiencia" className="text-gray-400 hover:text-mel transition-colors duration-200 text-sm">Experiência</a>
-            <a href="#contato"     className="text-gray-400 hover:text-mel transition-colors duration-200 text-sm">Contato</a>
+            <a href="/#sobre"       className="text-gray-400 hover:text-mel transition-colors duration-200 text-sm font-medio">Sobre</a>
+            <a href="/#habilidades" className="text-gray-400 hover:text-mel transition-colors duration-200 text-sm">Habilidades</a>
+            <a href="/#projetos"    className="text-gray-400 hover:text-mel transition-colors duration-200 text-sm">Projetos</a>
+            <a href="/#experiencia" className="text-gray-400 hover:text-mel transition-colors duration-200 text-sm">Experiência</a>
+            <a href="/#contato"     className="text-gray-400 hover:text-mel transition-colors duration-200 text-sm">Contato</a>
           </nav>
 
           {/* Botão hamburger mobile */}
@@ -97,11 +97,11 @@ export default function Navbar() {
         className={`${menuOpen ? 'block' : 'hidden'} md:hidden bg-abelha border-t border-favo`}
       >
         <ul className="flex flex-col px-4 py-4 gap-4">
-          <li><a href="#sobre"       onClick={closeMenu} className="block text-gray-300 hover:text-mel transition-colors py-1">Sobre</a></li>
-          <li><a href="#habilidades" onClick={closeMenu} className="block text-gray-300 hover:text-mel transition-colors py-1">Habilidades</a></li>
-          <li><a href="#projetos"    onClick={closeMenu} className="block text-gray-300 hover:text-mel transition-colors py-1">Projetos</a></li>
-          <li><a href="#experiencia" onClick={closeMenu} className="block text-gray-300 hover:text-mel transition-colors py-1">Experiência</a></li>
-          <li><a href="#contato"     onClick={closeMenu} className="block text-gray-300 hover:text-mel transition-colors py-1">Contato</a></li>
+          <li><a href="/#sobre"       onClick={closeMenu} className="block text-gray-300 hover:text-mel transition-colors py-1">Sobre</a></li>
+          <li><a href="/#habilidades" onClick={closeMenu} className="block text-gray-300 hover:text-mel transition-colors py-1">Habilidades</a></li>
+          <li><a href="/#projetos"    onClick={closeMenu} className="block text-gray-300 hover:text-mel transition-colors py-1">Projetos</a></li>
+          <li><a href="/#experiencia" onClick={closeMenu} className="block text-gray-300 hover:text-mel transition-colors py-1">Experiência</a></li>
+          <li><a href="/#contato"     onClick={closeMenu} className="block text-gray-300 hover:text-mel transition-colors py-1">Contato</a></li>
         </ul>
       </nav>
     </header>
